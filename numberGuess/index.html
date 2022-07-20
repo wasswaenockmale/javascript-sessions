@@ -22,10 +22,28 @@
         </div>
         
         <div class="resultSection">
-            <p class=""></p>
-            <p class=""></p>
-            <p class=""></p>
+            <p class="prevGuess"></p>
+            <p class="guessMessage"></p>
+            <p class="guessOver"></p>
         </div>
     </main>
+    <!-- javascript code below  -->
+    <script>
+        // The random number is from 1 to 100 
+        let randomNumber = Math.floor((Math.random() * 100) + 1)
+        const guessField = document.querySelector('.guessField')
+        const guessSubmit = document.querySelector('.guess-submit')
+        const guessMessage = document.querySelector('.guessMessage')
+        
+        let guessCount = 1;
+
+        function checkGuess(){
+            if(guessCount == 1){
+                
+            }
+        }
+
+        guessSubmit.addEventListener('click', checkGuess)
+    </script>
 </body>
 </html>
