@@ -27,3 +27,11 @@ function highAndLow(numbers){
     }
     return `${highest} ${lowest}`
   }
+
+
+
+//   Better solution would be 
+// function highAndLow(numbers){
+//     const array = numbers.split(" ").map(Number);
+//     return (Math.max.apply(0, array)) + " " + (Math.min.apply(0, array))
+// }
