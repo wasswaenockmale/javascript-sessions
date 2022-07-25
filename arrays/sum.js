@@ -19,3 +19,9 @@ function positiveSum(arr) {
     }
     return z;
   }
+
+//   This function returns the function without a second element 
+  function removeEveryOther(arr){
+    //your code here
+    return arr.filter((element, index)=> index%2 === 0)
+  }
