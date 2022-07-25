@@ -9,5 +9,4 @@ function descendingOrder(n){
     let number = num.join("")
     return Number(number)
   }
-
 //   parseInt(String(n).split('').sort().reverse().join(''))
