@@ -5,3 +5,11 @@ function maskify(cc) {
     }
     return cc
   }
+
+// Solving the problem using padding 
+// padding has two methods -> padStart() and padEnd()
+// threeone.
+
+function maskify(str){
+    return str.slice(-4).padStart(str.length, '#')
+}
