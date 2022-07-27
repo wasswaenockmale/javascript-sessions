@@ -25,3 +25,30 @@ function positiveSum(arr) {
     //your code here
     return arr.filter((element, index)=> index%2 === 0)
   }
+// This function returns an array with the first value being the count of the positive elements 
+// and the second value being the sum of the negative elements 
+function countPositivesSumNegatives(input) {
+  if(input === null){
+    return []
+  }else if(input.length === 0){
+    return []
+  }else{
+      let countP = 0
+      let sumNeg = 0
+      for(let value of input){
+        if(value > 0){
+          countP++
+        }else{
+          sumNeg += value
+        }
+      }
+      return [countP, sumNeg]
+  }
+ // your code here
+//   let positives = input.filter(element=>element>0)
+//   let negatives = input.filter(element=>element<0)
+//   if(negatives === null || negatives.length === 0){
+//     return [positives.length,0]
+//   }
+//   return [positives.length, negatives.reduce((pre, curr)=>pre+curr)]
+}
