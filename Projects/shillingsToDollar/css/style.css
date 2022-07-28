@@ -1,6 +1,6 @@
 body{
     height: 100vh;
-    background-color:aqua;
+    background-color:white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,10 +8,18 @@ body{
 
 .container{
     width: 400px;
-    height:400px;
+    height:250px;
+    background-color: aquamarine;
+    text-align: center;
 }
 
 .field-section{
     width: 300px;
     height: 100px;
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
