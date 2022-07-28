@@ -14,12 +14,14 @@
             <form action="">
                 <fieldset class="field-section">
                     <legend>Shilling to Dollars</legend>
-                    <input type="text" name="" id="shillings-input" placeholder="shillings">
-                    <input type="button" value="convert" id="convert">
-                    <p>$<span>0</span></p>
+                    <input type="text" name=""  placeholder="shillings" id="input">
+                    <input type="submit" value="convert" id="button" onclick="convertToDollars(event, Number(document.getElementById('input').value))">
+                    <h1 id="res">$<span>0</span></h1>
                 </fieldset>
+                <!-- <button class="button-reset" id="reset">reset</button> -->
             </form>
         </div>
     </main>
+    <script src="./js/index.js"></script>
 </body>
 </html>
