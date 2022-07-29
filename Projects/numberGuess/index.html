@@ -49,35 +49,48 @@
                 if(guess ===  randomNumber){
                     prevGuess.textContent += randomNumber
                     guessMessage.textContent = "Congratulation !!!"
-
+                    guessMessage.style.backgroundColor="green"
+                    gameOver()
                 }else{
-                    prevGuess.textContent +=guess
+                    prevGuess.textContent += "Previous: "+guess
                     guessMessage.textContent = "Wrong guess! Try again"
                     guessCount++
                 }
-            }else if(guessCount == 10){
+            }else if(guessCount === 10){
                 //This is a game over thing
                 if(guess ===  randomNumber){
                     prevGuess.textContent += " "+randomNumber
                     guessMessage.textContent = "Congratulation !!!"
+                    guessOver.textContent = "Game Over"
+                    gameOver()
                 }else{
                     prevGuess.textContent +=" "+guess
                     guessMessage.textContent = "Wrong guess! Try again"
                     guessCount++
                     guessOver.textContent = "Game Over"
+                    gameOver()
                 }
             }else{
                 if(guess === randomNumber){
                     prevGuess.textContent += " "+guess
                     guessMessage.textContent = "Congratulation !!!"
+                    guessMessage.style.backgroundColor="green"
+                    guessOver.textContent = "Game Over"
+                    guessCount++
+                    gameOver()
                 }else{
                     prevGuess.textContent += " "+guess
-                    guessMessage
+                    guessCount++
                 }
             }
         }
-
         guessSubmit.addEventListener('click', checkGuess)
+
+        // The game over function to stop the game.
+        // I have used an arrow function. 
+        let gameOver = ()=>{
+            
+        }
     </script>
 </body>
 </html>

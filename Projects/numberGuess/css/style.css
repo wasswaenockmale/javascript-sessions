@@ -2,13 +2,16 @@ body{
     background-color: lightblue;
     display: flex;
     justify-content: center;
+    align-items: center;
     height: 100vh;
-    padding: 50px;
+    /* padding: 50px; */
 }
 .container{
     width: 50%;
-    height: 500px;
+    height: 400px;
     background-color: white;
+    border-radius: 15px;
+    box-shadow: 2px 2px 20px rgb(136, 135, 135);
 }
 h1{
     text-align: center;
@@ -16,4 +19,9 @@ h1{
 }
 p{
     text-align: center;
+}
+
+.guessForm{
+    display: flex;
+    justify-content: center;
 }
