@@ -24,22 +24,63 @@
         <div class="resultSection">
             <p class="prevGuess"></p>
             <p class="guessMessage"></p>
-            <p class="guessOver"></p>
+            <p class="guessOver">Game Over</p>
         </div>
     </main>
     <!-- javascript code below  -->
     <script>
+        
         // The random number is from 1 to 100 
         let randomNumber = Math.floor((Math.random() * 100) + 1)
         const guessField = document.querySelector('.guessField')
         const guessSubmit = document.querySelector('.guess-submit')
         const guessMessage = document.querySelector('.guessMessage')
+        const prevGuess = document.querySelector('.prevGuess')
+        const guessOver = document.querySelector('.guessOver')
         
-        let guessCount = 1;
+        // const p = document.getElementsByTagName('p')
 
+        console.log(guessOver)
+        let guessCount = 1;
+        prevGuess.textContent = ''// We just have to append to the this tag.
         function checkGuess(){
+            let guess = +guessField.value
             if(guessCount == 1){
-                
+                if(guess ===  randomNumber){
+                    prevGuess.textContent += randomNumber
+                    guessMessage.textContent = "Congratulation !!!"
+                    // guessMessage.
+                }else{
+                    prevGuess.textContent +=guess
+                    guessMessage.textContent = "Wrong guess! Try again"
+                    guessCount++
+                }
+            }else if(guessCount == 10){
+                //This is a game over thing
+                if(guess ===  randomNumber){
+                    prevGuess.textContent += " "+randomNumber
+                    guessMessage.textContent = "Congratulation !!!"
+                    // gameOver()
+                    guessOver.textContent = "Game Over"
+                    // startAgain()
+                    // guessMessage.
+                }else{
+                    prevGuess.textContent +=" "+guess
+                    guessMessage.textContent = "Wrong guess! Try again"
+                    guessOver.textContent = "Game Over"
+                    // gameOver()
+                    // startAgain()
+                }
+            }else{
+                if(guess === randomNumber){
+                    prevGuess.textContent += " "+guess
+                    guessMessage.textContent = "Congratulation !!!"
+                    gameOver();
+                    startAgain();
+                }else{
+                    prevGuess.textContent += " "+guess
+                    guessMessage
+                }
             }
         }
 
