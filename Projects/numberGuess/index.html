@@ -24,7 +24,7 @@
         <div class="resultSection">
             <p class="prevGuess"></p>
             <p class="guessMessage"></p>
-            <p class="guessOver">Game Over</p>
+            <p class="guessOver"></p>
         </div>
     </main>
     <!-- javascript code below  -->
@@ -39,8 +39,8 @@
         const guessOver = document.querySelector('.guessOver')
         
         // const p = document.getElementsByTagName('p')
+        // console.log(guessOver)
 
-        console.log(guessOver)
         let guessCount = 1;
         prevGuess.textContent = ''// We just have to append to the this tag.
         function checkGuess(){
@@ -49,7 +49,7 @@
                 if(guess ===  randomNumber){
                     prevGuess.textContent += randomNumber
                     guessMessage.textContent = "Congratulation !!!"
-                    // guessMessage.
+
                 }else{
                     prevGuess.textContent +=guess
                     guessMessage.textContent = "Wrong guess! Try again"
@@ -60,23 +60,16 @@
                 if(guess ===  randomNumber){
                     prevGuess.textContent += " "+randomNumber
                     guessMessage.textContent = "Congratulation !!!"
-                    // gameOver()
-                    guessOver.textContent = "Game Over"
-                    // startAgain()
-                    // guessMessage.
                 }else{
                     prevGuess.textContent +=" "+guess
                     guessMessage.textContent = "Wrong guess! Try again"
+                    guessCount++
                     guessOver.textContent = "Game Over"
-                    // gameOver()
-                    // startAgain()
                 }
             }else{
                 if(guess === randomNumber){
                     prevGuess.textContent += " "+guess
                     guessMessage.textContent = "Congratulation !!!"
-                    gameOver();
-                    startAgain();
                 }else{
                     prevGuess.textContent += " "+guess
                     guessMessage
