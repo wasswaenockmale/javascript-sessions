@@ -52,3 +52,13 @@ function countPositivesSumNegatives(input) {
 //   }
 //   return [positives.length, negatives.reduce((pre, curr)=>pre+curr)]
 }
+
+
+// The code below shows how to use the spread operator in javascript. 
+// It is used in-line and it returns the unpacked array.
+const arr1 = ['JAN', 'FEB', 'MAR', 'APR', 'MAY'];
+let arr2;
+
+arr2 = [...arr1];  // Change this line
+
+console.log(arr2);
