@@ -22,7 +22,7 @@ body{
 }
 
 legend{
-    color: rgb(23, 85, 231);
+    color: black;
     text-align: left;
 }
 
@@ -33,19 +33,17 @@ legend{
 }
 
 #input{
-    border: 1px solid rgb(78, 77, 77);
+    border: 1px solid rgb(105, 137, 239);
     background-color: white;
     width: 150px;
     height: 25px;
     border-radius: 10px;
-}
-#input:active{
-    border: none;
+    padding-left: 10px;
 }
 
-/* #input:hover{
-    border: none;
-} */
+#input:focus{
+    outline: none;
+}
 #button{
     border: none;
     border-radius: 5px;
