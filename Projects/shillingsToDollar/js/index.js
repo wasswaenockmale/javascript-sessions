@@ -5,7 +5,7 @@ const reset = document.getElementById("reset")
 // The function that converts shillings to dollars
 let convertToDollars = (event,amount)=>{
     event.preventDefault()
-    result.innerHTML =  amount/3878.47
+    result.innerHTML =  (amount/3878.47).toFixed(2)
 }
 // The reset button should reset the h1 tag of the html
 // let resetButton = ()=>{
