@@ -14,3 +14,20 @@ let convertToDollars = (event,amount)=>{
 
 // // using the addEventListener()
 // reset.addEventListener('click',resetButton())
+
+// Form validation using Javascript
+function validation(){
+    let inputValue = document.forms['formname']['inputname'].value
+    if(inputValue == ""){
+        alert("Field name should not be empty.");
+        return false
+    }
+}
+
+// function questionToKevin(string){
+//     if(string === "You love me more"){
+//         console.log("I will marry you")
+//     }else{
+//         console.log("You don't wanna get married to me")
+//     }
+// }

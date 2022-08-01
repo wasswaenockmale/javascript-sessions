@@ -19,6 +19,7 @@ body{
     width: 300px;
     height: 100px;
     border:1px solid chocolate;
+    padding: 5px;
 }
 
 legend{
@@ -30,6 +31,7 @@ legend{
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px;
 }
 
 #input{
