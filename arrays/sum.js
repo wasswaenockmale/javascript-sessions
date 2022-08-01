@@ -62,3 +62,16 @@ let arr2;
 arr2 = [...arr1];  // Change this line
 
 console.log(arr2);
+
+// In javascript, you can also use the destructuring assignment to extract values from an object 
+const HIGH_TEMPERATURES = {
+  yesterday: 75,
+  today: 77,
+  tomorrow: 80
+};
+
+// Only change code below this line
+
+// const today = HIGH_TEMPERATURES.today;
+// const tomorrow = HIGH_TEMPERATURES.tomorrow;
+const {today, tomorrow} = HIGH_TEMPERATURES // This is the destructuring assigment to extract today and tomorrow from the Object
