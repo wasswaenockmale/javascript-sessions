@@ -1,0 +1,49 @@
+body{
+    background-color: hsl(248, 53%, 58%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main{
+    width: 500px;
+    height: 550px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px hsl(248, 55%, 60%);
+    text-align: center;
+}
+h1{
+    color: hsl(248, 53%, 58%);
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    /* height: 470px; */
+    align-items: center;
+    /* background-color: #ffffcc; */
+    /* border: 1px solid yellow; */
+}
+
+input{
+    margin: 10px;
+    height: 40px;
+    width: 400px;
+    border-radius: 5px;
+    padding: 2px;
+    border: 1px solid hsl(248, 53%, 58%);
+}
+
+input::placeholder{
+    /* font-size: 17px; */
+    color: hsl(248, 53%, 58%);
+}
+#submit{
+    width: 300px;
+    color: white;
+    background-color: hsl(248, 53%, 58%);
+    border: none;
+    border-radius: 5px;
+}
