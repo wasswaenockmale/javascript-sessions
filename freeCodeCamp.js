@@ -120,3 +120,27 @@ const thermos = new Thermostat(76); // Setting in Fahrenheit scale
 let temp = thermos.temperature; // 24.44 in Celsius
 thermos.temperature = 26;
 temp = thermos.temperature; // 26 in Celsius
+
+
+/**
+ * Using promises in javascript
+ * 
+ */
+const makeServerRequest = new Promise((resolve, reject)=>{
+  let response;// Boolean value showing the response was a success or failure
+  if(response){
+    resolve("We can do something")// This is also a function of what was promised to be done, when the response is true from the server
+  }else{
+    reject("There is no data fetched from the server")
+  }
+})
+
+// You can also do something after the response was a success
+makeServerRequest.then(result =>{
+  // result is the result from the server
+})
+
+// You can also catch the error for the false response of the server
+makeServerRequest.catch(error =>{
+  console.log(error)
+})
