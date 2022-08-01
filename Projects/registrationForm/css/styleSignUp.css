@@ -14,6 +14,16 @@ main{
     box-shadow: 10px 10px 10px hsl(248, 55%, 60%);
     text-align: center;
 }
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* border: 1px solid red; */
+    height: 30px;
+    /* justify-content: center; */
+    text-align: center;
+    color:white;
+}
 h1{
     color: hsl(248, 53%, 58%);
 }
