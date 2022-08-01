@@ -7,8 +7,8 @@ body{
 }
 
 .container{
-    width: 400px;
-    height:250px;
+    width: 500px;
+    height:500px;
     background-color: aquamarine;
     text-align: center;
     box-shadow: 0px 1px 12px aquamarine;
@@ -16,12 +16,15 @@ body{
 }
 
 .field-section{
-    width: 300px;
-    height: 100px;
+    width: 350px;
+    height: 200px;
     border:1px solid chocolate;
     padding: 5px;
+    margin-top: 50px;
 }
-
+.select-currecy{
+    margin: 20px;
+}
 legend{
     color: black;
     text-align: left;
@@ -37,8 +40,8 @@ legend{
 #input{
     border: 1px solid rgb(105, 137, 239);
     background-color: white;
-    width: 150px;
-    height: 25px;
+    width: 200px;
+    height: 40px;
     border-radius: 10px;
     padding-left: 10px;
 }
@@ -49,7 +52,7 @@ legend{
 #button{
     border: none;
     border-radius: 5px;
-    height: 25px;
+    height: 35px;
     width: 100px;
     background-color: chocolate;
     color: white;
