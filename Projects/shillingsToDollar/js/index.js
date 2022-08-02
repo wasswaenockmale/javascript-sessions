@@ -164,7 +164,7 @@ let otherCurrencyToUgx = (amount, from)=>{
 let thousandOperator = (amount)=>{
     // This is a regular expression that splits the 'amount' string into chunks of 3substring, 
     //the \d shows it must be a number
-    let regex = /\d{1,3}/
+    let regex = /\d{2,3}/
     let result;
     // I have used the string template to turn the amount in Number to String
     let str = `${amount}` 
