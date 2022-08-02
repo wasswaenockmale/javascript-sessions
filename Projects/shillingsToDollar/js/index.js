@@ -170,7 +170,7 @@ let thousandOperator = (amount)=>{
     let str = `${amount}` 
 
     // regular expression to check whether there is a decimal point in the string
-    let regDecimalPoint = /[.]/g
+    let regDecimalPoint = /[.]/
 
     if(regDecimalPoint.test(amount)){
         // I will take the string at index 0 and work on that
