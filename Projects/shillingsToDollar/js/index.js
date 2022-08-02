@@ -11,8 +11,8 @@ let currencyValues = {
     euro: 3966.27,
     pound: 4737.72
 }
+
 // The function that converts shillings to dollars
-console.log("Things are working")
 let convertingMoney = (event)=>{
     event.preventDefault()
     // I have used an async function to wait for the input value from the user.
@@ -21,81 +21,100 @@ let convertingMoney = (event)=>{
             switch (updateSelecteTo()) {
                 case "dollars":
                     // Do the calculation here
-                    result.innerHTML = input.value
+                    result.innerHTML = euroToOtherCurrency(+input.value,updateSelecteTo())
+                    result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "&dollar;"
                     break
                 case "pound":
                     // Do the calucation here
-                    result.innerHTML = input.value
+                    result.innerHTML = euroToOtherCurrency(+input.value,updateSelecteTo())
+                    result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "&pound;"
                     break
                 case "shillings":
-                    result.innerHTML = input.value
+                    result.innerHTML = otherCurrencyToUgx(amount, updateSelectFrom())
+                    result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "UGX"
                     break;
                 default:
-                    // Default is when it is shillings
-                    result.innerHTML = input.value
-                    currencySign.innerHTML = "&euro;"
+                    // Default is when the selectedFrom == selectedTo
+                    result.innerHTML = "Same currency selected!!!"
+                    result.style.backgroundColor = "yellow"
+                    currencySign.innerHTML = ""
                     break;
             }
         }else if(updateSelectFrom() == "dollars"){
             switch (updateSelecteTo()) {
                 case "euro":
-                    result.innerHTML = input.value
+                    result.innerHTML = dollarToOtherCurrecy(+input.value,updateSelecteTo())
+                    result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "&euro;"
                     break;
                 case "pound":
-                    result.innerHTML = input.value
+                    result.innerHTML = dollarToOtherCurrecy(+input.value,updateSelecteTo())
+                    result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "&pound;"
                     break
                 case "shillings":
-                    result.innerHTML = input.value
+                    result.innerHTML = otherCurrencyToUgx(+input.value,updateSelectFrom())
+                    result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "UGX"
                     break
                 default:
-                    result.innerText = input.value
-                    currencySign.innerHTML = "&dollar;"
+                    // Default is when the selectedFrom == selectedTo
+                    result.innerHTML = "Same currency selected!!!"
+                    result.style.backgroundColor = "yellow"
+                    currencySign.innerHTML = ""
                     break;
             }
         }else if(updateSelectFrom() == "pound"){
             switch (updateSelecteTo()) {
                 case "euro":
-                    result.innerHTML = input.value
+                    result.innerHTML = poundToOTherCurrecy(+input.value, updateSelecteTo())
+                    result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "&euro;"
                     break;
                 case "dollars":
-                    result.innerHTML = input.value
+                    result.innerHTML = poundToOTherCurrecy(+input.value, updateSelecteTo())
+                    result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "&dollar;"
                     break;
 
                 case "shillings":
-                    result.innerHTML = input.value
+                    result.innerHTML = otherCurrencyToUgx(+input.value, updateSelectFrom())
+                    result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "UGX"
                     break;
                 default:
-                    result.innerHTML = input.value
-                    currencySign.innerHTML = "&pound"
+                    // Default is when the selectedFrom == selectedTo
+                    result.innerHTML = "Same currency selected!!!"
+                    result.style.backgroundColor = "yellow"
+                    currencySign.innerHTML = ""
                     break;
             }
         }else if(updateSelectFrom() == "shillings"){
             // This is when the selectFrom.value
             switch (updateSelecteTo()){
                 case "euro":
-                    result.innerHTML = input.value
+                    result.innerHTML = shillingsToOtherCurrecy(+input.value, updateSelecteTo())
                     currencySign.innerHTML = "&euro;"
+                    result.style.backgroundColor = "aquamarine"
                     break;
                 case "dollars":
-                    result.innerHTML = input.value
+                    result.innerHTML = shillingsToOtherCurrecy(+input.value, updateSelecteTo())
                     currencySign.innerHTML = "&dollar;"
+                    result.style.backgroundColor = "aquamarine"
                     break
                 case "pound":
-                    result.innerHTML = input.value
+                    result.innerHTML = shillingsToOtherCurrecy(+input.value, updateSelecteTo())
                     currencySign.innerHTML = "&pound;"
+                    result.style.backgroundColor = "aquamarine"
                     break;
                 default:
-                    result.innerHTML = input.value
-                    currencySign.innerHTML = "UGX"
+                    // Default is when the selectedFrom == selectedTo
+                    result.innerHTML = "Same currency selected!!!"
+                    result.style.backgroundColor = "yellow"
+                    currencySign.innerHTML = ""
                     break
             }
         }
@@ -110,4 +129,31 @@ function updateSelectFrom(){
 
 function updateSelecteTo(){
         return selectTo.options[selectTo.selectedIndex].value
+}
+
+/**
+ * I am writing all my currency converter calculations here.
+ */
+
+let shillingsToOtherCurrecy = (amount, curr)=>{
+    return (amount/currencyValues[curr]).toFixed(3)
+}
+let dollarToOtherCurrecy = (amount, currency)=>{
+    // First change the amount to shillings
+    let shillings = amount * (currencyValues.dollars)
+    return shillingsToOtherCurrecy(shillings, currency)
+}
+
+let poundToOTherCurrecy = (amount, currency)=>{
+    let shillings = amount * (currencyValues.pound)
+    return shillingsToOtherCurrecy(shillings, currency)
+}
+
+let euroToOtherCurrency = (amount, currency)=>{
+    let shillings = amount * (currencyValues.euro)
+    return shillingsToOtherCurrecy(shillings, currency)
+}
+
+let otherCurrencyToUgx = (amount, from)=>{
+    return (amount * currencyValues[from]).toFixed(3)
 }
