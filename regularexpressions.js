@@ -81,14 +81,75 @@ let res1 = userCheck.test(username);
 
 // Removing white space characters from the string
 let whiteSpaceRegex = /\s/g
-console.log(quoteSample2.match(whiteSpaceRegex))
+// console.log(quoteSample2.match(whiteSpaceRegex))
 
 // Searching everything except the white space in a sentence
 let nonWhitespaceRegex = /\S/g
-console.log(quoteSample2.match(nonWhitespaceRegex))
+// console.log(quoteSample2.match(nonWhitespaceRegex))
 
 
 // specifying a specific number of characters 
 let tim = "Timmmmber"
 let specify = /tim{4}ber/i
-console.log(tim.match(specify))
+// console.log(tim.match(specify))
+
+
+// Trying to use lookaheads
+// The positive look ahead '?=...' and the negative lookahead '?!...'
+let string = 'que'
+let reg = /q(?=u)/
+let regNegative = /(?!u)/
+// console.log(regNegative.test(string))
+
+let sampleWord = "astronaut";
+let pwRegex = /(?=\w{6,})(?=\D*\d{2})/; // Change this line
+let re = pwRegex.test(sampleWord);
+
+// More characters in regular-expression.
+let he = "A football match"
+let starts = /\foo/
+let there = /\bfoo/
+let thereb = /foo\b/ // at the end
+let ends = /\Afoo/ // At the start of the string
+console.log(starts.test(he))
+
+// caret ^ show that the string starts with a given string 
+// \Z checks whether the specified string is at the end of the string. 
+
+
+// More on regular expressions 
+let mystr = "Eleanor Roosevelt";
+let myregex = /(Franklin|Eleanor)\D*Roosevelt/; // Change this line
+let res = myRegex.test(myString);
+console.log(res)
+
+// Using capture groups in regular expressions
+let repeatNum = "42 42 42 42";
+let reRegex = /(\d+) \1 \1/; // Change this line
+let resut = reRegex.test(repeatNum);
+let sut = repeatNum.match(reRegex)
+console.log(sut)
+
+// Reuse Patterns Using Capture Groups
+// $ means from the beginning to the end of the string.
+let repeatNu = "42 42 42";
+let reRege = /^(\d+) \1 \1$/; // Change this line
+let resul = reRegex.test(repeatNum);
+
+console.log("Code Camp".replace(/(\w+)\s(\w+)/, '$2 $1'))
+
+let str7= "one two three";
+let fixRegex = /(\w+)\s(\w+)\s(\w+)/; // This string has three capture groups
+let replaceText = "$3 $2 $1"; // the '$' helps hold the capture groups
+let resu = str7.replace(fixRegex, replaceText);
+console.log(resu)
+
+let hello = "   Hello, World!  ";
+let wsRegex = /^\s|\s+$/g //This regular expression searches the entire string and removes the white space at the beginning and at the end of the string
+let ru = hello.replace(wsRegex,"one"); // Change this line
+console.log(ru)
+
+const arr = [2, 4, 5, 1, 7, 5, 2, 1];
+// Only change code below this line
+arr = arr.splice(1,3)
+console.log
