@@ -16,7 +16,7 @@ let currencyValues = {
 let convertingMoney = (event)=>{
     event.preventDefault()
     // I have used an async function to wait for the input value from the user.
-    setTimeout(()=>{
+    // setTimeout(()=>{
         if(updateSelectFrom() == "euro"){
             switch (updateSelecteTo()) {
                 case "dollars":
@@ -119,7 +119,7 @@ let convertingMoney = (event)=>{
             }
         }
         // result.innerHTML =  (input.value/3878.47).toFixed(2)
-    },500)
+    // },500)
 }
 
 
