@@ -95,7 +95,7 @@ const contacts = [
     }
   };
 
-  console.log(rangeOfNumbers(6,9))
+  // console.log(rangeOfNumbers(6,9))
 
 
 // Only change code below this line
@@ -126,21 +126,170 @@ temp = thermos.temperature; // 26 in Celsius
  * Using promises in javascript
  * 
  */
-const makeServerRequest = new Promise((resolve, reject)=>{
-  let response;// Boolean value showing the response was a success or failure
-  if(response){
-    resolve("We can do something")// This is also a function of what was promised to be done, when the response is true from the server
-  }else{
-    reject("There is no data fetched from the server")
+// const makeServerRequest = new Promise((resolve, reject)=>{
+//   let response;// Boolean value showing the response was a success or failure
+//   if(response){
+//     resolve("We can do something")// This is also a function of what was promised to be done, when the response is true from the server
+//   }else{
+//     reject("There is no data fetched from the server")
+//   }
+// })
+
+// // You can also do something after the response was a success
+// makeServerRequest.then(result =>{
+//   // result is the result from the server
+// })
+
+// // You can also catch the error for the false response of the server
+// makeServerRequest.catch(error =>{
+//   console.log(error)
+// })
+
+const users = {
+  Alan: {
+    online: false
+  },
+  Jeff: {
+    online: true
+  },
+  Sarah: {
+    online: false
   }
-})
+}
 
-// You can also do something after the response was a success
-makeServerRequest.then(result =>{
-  // result is the result from the server
-})
+// for(let user in users){
+//   console.log(users[user].online)
+// }
 
-// You can also catch the error for the false response of the server
-makeServerRequest.catch(error =>{
-  console.log(error)
-})
+function arrayKeys(obj){
+  return Object.keys(obj)
+}
+
+// console.log(arrayKeys(users))
+
+let user = {
+  name: 'Kenneth',
+  age: 28,
+  data: {
+    username: 'kennethCodesAllDay',
+    joinDate: 'March 26, 2016',
+    organization: 'freeCodeCamp',
+    friends: [
+      'Sam',
+      'Kira',
+      'Tomo'
+    ],
+    location: {
+      city: 'San Francisco',
+      state: 'CA',
+      country: 'USA'
+    }
+  }
+};
+function arr(obj, newFriend){
+  let arr2 = obj.data.friends
+  arr2.push(newFriend)
+  obj.data.friends = arr2
+  return obj
+}
+
+// console.log(arr(user,"Enock"))
+// arr(user,"Enock")
+
+function findLongestWordLength(str) {
+  let arr = str.split(" ")
+  let number = 0;
+  for(let word of arr){
+    let len = word.length
+    if(number < len){
+      number = len
+    }
+  }
+  return number;
+}
+
+// let str = "I love programming in this world"
+// let arr2 = str.split(" ")
+// for(let word of arr2){
+//   console.log(word)
+// }
+
+// console.log(findLongestWordLength("The quick brown fox jumped over the lazy dog"));
+// findLongestWordLength("The quick brown fox jumped over the lazy dog");
+
+function largestOfFour(arr) {
+  
+  for(let i = 0; i < arr.length; i++){
+    let number = arr[i][0]
+    for(let j = 0; j < arr[i].length; j++){
+      // console.log(arr[i][j])
+      if(number < arr[i][j]){
+        // console.log(arr[i][j])
+        number = arr
+      }
+    }
+  }
+  return arr[index];
+}
+
+// console.log(largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]));
+// largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]])
+
+function confirmEnding(str, target) {
+  return str.slice(-(target.length)) === target
+}
+// console.log(confirmEnding("programming is love","love"))
+
+function repeatStringNumTimes(str, num) {
+  if(num < 0){
+    return ""
+  }else{
+    let newStr = ""
+    for(let i = 0; i < num; i++){
+      newStr += str
+    }
+    return newStr
+  }
+  
+}
+
+// console.log(repeatStringNumTimes("abc", 3))
+
+function findElement(arr, func) {
+  for(let item of arr){
+    if(func(item)){
+      return item
+    }
+  }
+  return undefined
+}
+
+// findElement([1, 2, 3, 4], num => num % 2 === 0);
+console.log(typeof true)
+function booWho(bool) {
+  if(typeof bool === "boolean"){
+    return true
+  }
+  return false
+}
+
+// console.log(booWho(null))
+function titleCase(str) {
+  let arr = str.split(" ");
+  let arr1 = []
+
+  for(let word of arr){
+    arr1.push(word[0].toUpperCase() + word.slice(1).toLowerCase())
+  }
+
+  return arr1.join(" ")
+}
+
+// titleCase("I'm a little tea pot");
+function frankenSplice(arr1, arr2, n) {
+  const arr3 = arr2
+  arr3.splice(n,0,...arr1);
+  return arr2
+}
+
+console.log(frankenSplice([1, 2, 3], [4, 5, 6], 1))
