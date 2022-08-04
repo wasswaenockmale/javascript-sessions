@@ -23,10 +23,13 @@ input.addEventListener('input',(event)=>{
 let convertingMoney = (event)=>{
     event.preventDefault()
 
+    // This if statement checks whether the inputValue is an empty string.
         if(inputValue === ""){
             result.innerHTML = "0"
             currencySign.innerHTML = "&dollar;"
         }
+
+        // This if statement checks the option selected by the user to 
         if(updateSelectFrom() == "euro"){
             switch (updateSelecteTo()) {
                 case "dollars":
