@@ -4,7 +4,7 @@ const selectFrom = document.getElementById("from_currency")
 const selectTo = document.getElementById("to_currency")
 const currencySign = document.getElementById("currecySign")
 
-
+let count = 0
 // This object contains values of different currences to UGX
 let currencyValues = {
     dollars:3878.47,
@@ -12,125 +12,130 @@ let currencyValues = {
     pound: 4737.72
 }
 // Creating a function that receives the input from the user
-let inputValue;
-input.addEventListener('change',(event)=>{
+let inputValue = "";
+input.addEventListener('input',(event)=>{
     // event.target.style.background = "red"
     inputValue = event.target.value
-    event.target.value = thousandOperator(event.target.value)
-    // console.log(inputValue)
+    event.target.value = thousandOperator(removeComma(event.target.value))
     // console.log(thousandOperator(event.target.value))
 })
 // The function that converts shillings to dollars
 let convertingMoney = (event)=>{
     event.preventDefault()
-    // I have used an async function to wait for the input value from the user.
-    // setTimeout(()=>{
+
+        if(inputValue === ""){
+            result.innerHTML = "0"
+            currencySign.innerHTML = "&dollar;"
+        }
         if(updateSelectFrom() == "euro"){
             switch (updateSelecteTo()) {
                 case "dollars":
                     // Do the calculation here
-                    result.innerHTML = thousandOperator(euroToOtherCurrency(+inputValue,updateSelecteTo()))
+                    result.innerHTML = thousandOperator(euroToOtherCurrency(+removeComma(inputValue),updateSelecteTo()))
                     result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "&dollar;"
                     break
                 case "pound":
                     // Do the calucation here
-                    result.innerHTML = thousandOperator(euroToOtherCurrency(+inputValue,updateSelecteTo()))
+                    result.innerHTML = thousandOperator(euroToOtherCurrency(+removeComma(inputValue),updateSelecteTo()))
                     result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "&pound;"
                     break
                 case "shillings":
-                    result.innerHTML = thousandOperator(otherCurrencyToUgx(+inputValue, updateSelectFrom()))
+                    result.innerHTML = thousandOperator(otherCurrencyToUgx(+removeComma(inputValue), updateSelectFrom()))
                     result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "UGX"
+                    currencySign.style.fontSize = "20px"
+                    currencySign.style.margin = "5px"
                     break;
                 default:
                     // Default is when the selectedFrom == selectedTo
-                    result.innerHTML = "Same currency selected!!!"
-                    result.style.backgroundColor = "yellow"
-                    currencySign.innerHTML = ""
+                    result.innerHTML = inputValue
+                    currencySign.innerHTML = "&euro"
                     break;
             }
         }else if(updateSelectFrom() == "dollars"){
             switch (updateSelecteTo()) {
                 case "euro":
-                    result.innerHTML = thousandOperator(dollarToOtherCurrecy(+inputValue,updateSelecteTo()))
+                    result.innerHTML = thousandOperator(dollarToOtherCurrecy(+removeComma(inputValue),updateSelecteTo()))
                     result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "&euro;"
                     break;
                 case "pound":
-                    result.innerHTML = thousandOperator(dollarToOtherCurrecy(+inputValue,updateSelecteTo()))
+                    result.innerHTML = thousandOperator(dollarToOtherCurrecy(+removeComma(inputValue),updateSelecteTo()))
                     result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "&pound;"
                     break
                 case "shillings":
-                    result.innerHTML = thousandOperator(otherCurrencyToUgx(+inputValue,updateSelectFrom()))
+                    result.innerHTML = thousandOperator(otherCurrencyToUgx(+removeComma(inputValue),updateSelectFrom()))
                     result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "UGX"
+                    currencySign.style.fontSize = "20px"
+                    currencySign.style.margin = "5px"
                     break
                 default:
                     // Default is when the selectedFrom == selectedTo
-                    result.innerHTML = "Same currency selected!!!"
-                    result.style.backgroundColor = "yellow"
-                    currencySign.innerHTML = ""
+                    result.innerHTML = inputValue
+                    currencySign.innerHTML = "&dollar;"
                     break;
             }
         }else if(updateSelectFrom() == "pound"){
             switch (updateSelecteTo()) {
                 case "euro":
-                    result.innerHTML = thousandOperator(poundToOTherCurrecy(+inputValue, updateSelecteTo()))
+                    result.innerHTML = thousandOperator(poundToOTherCurrecy(+removeComma(inputValue), updateSelecteTo()))
                     result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "&euro;"
                     break;
                 case "dollars":
-                    result.innerHTML = thousandOperator(poundToOTherCurrecy(+inputValue, updateSelecteTo()))
+                    result.innerHTML = thousandOperator(poundToOTherCurrecy(+removeComma(inputValue), updateSelecteTo()))
                     result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "&dollar;"
                     break;
 
                 case "shillings":
-                    result.innerHTML = thousandOperator(otherCurrencyToUgx(+inputValue, updateSelectFrom()))
+                    result.innerHTML = thousandOperator(otherCurrencyToUgx(+removeComma(inputValue), updateSelectFrom()))
                     result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "UGX"
+                    currencySign.style.fontSize = "20px"
+                    currencySign.style.margin = "5px"
                     break;
                 default:
                     // Default is when the selectedFrom == selectedTo
-                    result.innerHTML = "Same currency selected!!!"
-                    result.style.backgroundColor = "yellow"
-                    currencySign.innerHTML = ""
+                    result.innerHTML = inputValue
+                    currencySign.innerHTML = "&pound;"
                     break;
             }
         }else if(updateSelectFrom() == "shillings"){
             // This is when the selectFrom.value
             switch (updateSelecteTo()){
                 case "euro":
-                    result.innerHTML = thousandOperator(shillingsToOtherCurrecy(+inputValue, updateSelecteTo()))
+                    result.innerHTML = thousandOperator(shillingsToOtherCurrecy(+removeComma(inputValue), updateSelecteTo()))
                     currencySign.innerHTML = "&euro;"
                     result.style.backgroundColor = "aquamarine"
                     break;
                 case "dollars":
-                    result.innerHTML = thousandOperator(shillingsToOtherCurrecy(+inputValue, updateSelecteTo()))
+                    result.innerHTML = thousandOperator(shillingsToOtherCurrecy(+removeComma(inputValue), updateSelecteTo()))
                     currencySign.innerHTML = "&dollar;"
                     result.style.backgroundColor = "aquamarine"
                     break
                 case "pound":
-                    result.innerHTML = thousandOperator(shillingsToOtherCurrecy(+inputValue, updateSelecteTo()))
+                    result.innerHTML = thousandOperator(shillingsToOtherCurrecy(+removeComma(inputValue), updateSelecteTo()))
                     currencySign.innerHTML = "&pound;"
                     result.style.backgroundColor = "aquamarine"
                     break;
                 default:
                     // Default is when the selectedFrom == selectedTo
-                    result.innerHTML = "Same currency selected!!!"
-                    result.style.backgroundColor = "yellow"
-                    currencySign.innerHTML = ""
+                    result.innerHTML = inputValue
+                    currencySign.innerHTML = "UGX"
+                    currencySign.style.fontSize = "20px"
+                    currencySign.style.margin = "5px"
                     break
             }
         }
-        // result.innerHTML =  (input.value/3878.47).toFixed(2)
-    // },500)
 }
 
 
+// Functions that have to be used to calculate the different files
 function updateSelectFrom(){
     return selectFrom.options[selectFrom.selectedIndex].value
 }
@@ -206,4 +211,11 @@ let thousandOperator = (amount)=>{
         }
     }
     return result
+}
+
+// function to remove ',' from the string in javascript
+let removeComma = (string)=>{
+    // This is the regular expression that you are supposed to work on 
+    let reg = /[,]/g
+    return string.replace(reg,"")
 }
