@@ -14,25 +14,25 @@
             <form action="">
                 <div class="select-currecy">
                     <label for="">From</label>
-                    <select name="fromCurrency" id="from_currency">
+                    <select name="fromCurrency" id="from_currency" onchange="updateSelectFrom()">
                         <option value="dollars">Dollars</option>
                         <option value="euro">Euro</option>
                         <option value="shillings">Shillings</option>
                         <option value="pound">Pound</option>
                     </select>
                     <label for="">To</label>
-                    <select name="toCurrency" id="to_currency">
+                    <select name="toCurrency" id="to_currency" onchange="updateSelecteTo()">
                         <option value="dollars">Dollars</option>
                         <option value="euro">Euro</option>
                         <option value="shillings">Shillings</option>
-                    <option value="pound">Pound</option>
+                        <option value="pound">Pound</option>
                     </select>
                 </div>
                 <fieldset class="field-section">
                     <legend>Shilling to Dollars</legend>
-                    <input type="number" name=""  placeholder="shillings" id="input">
-                    <input type="submit" value="convert" id="button" onclick="convertToDollars(event)">
-                    <h1>$<span id="res">0</span></h1>
+                    <input type="text" name=""  placeholder="shillings" id="input" required>
+                    <input type="submit" value="convert" id="button" onclick="convertingMoney(event)">
+                    <h1><span id="currecySign">$</span><span id="res">0</span></h1>
                 </fieldset>
                 <!-- <button class="button-reset" id="reset">reset</button> -->
             </form>
