@@ -11,28 +11,36 @@ let currencyValues = {
     euro: 3966.27,
     pound: 4737.72
 }
-
+// Creating a function that receives the input from the user
+let inputValue;
+input.addEventListener('change',(event)=>{
+    // event.target.style.background = "red"
+    inputValue = event.target.value
+    event.target.value = thousandOperator(event.target.value)
+    // console.log(inputValue)
+    // console.log(thousandOperator(event.target.value))
+})
 // The function that converts shillings to dollars
 let convertingMoney = (event)=>{
     event.preventDefault()
     // I have used an async function to wait for the input value from the user.
-    setTimeout(()=>{
+    // setTimeout(()=>{
         if(updateSelectFrom() == "euro"){
             switch (updateSelecteTo()) {
                 case "dollars":
                     // Do the calculation here
-                    result.innerHTML = euroToOtherCurrency(+input.value,updateSelecteTo())
+                    result.innerHTML = thousandOperator(euroToOtherCurrency(+inputValue,updateSelecteTo()))
                     result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "&dollar;"
                     break
                 case "pound":
                     // Do the calucation here
-                    result.innerHTML = euroToOtherCurrency(+input.value,updateSelecteTo())
+                    result.innerHTML = thousandOperator(euroToOtherCurrency(+inputValue,updateSelecteTo()))
                     result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "&pound;"
                     break
                 case "shillings":
-                    result.innerHTML = otherCurrencyToUgx(amount, updateSelectFrom())
+                    result.innerHTML = thousandOperator(otherCurrencyToUgx(+inputValue, updateSelectFrom()))
                     result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "UGX"
                     break;
@@ -46,17 +54,17 @@ let convertingMoney = (event)=>{
         }else if(updateSelectFrom() == "dollars"){
             switch (updateSelecteTo()) {
                 case "euro":
-                    result.innerHTML = dollarToOtherCurrecy(+input.value,updateSelecteTo())
+                    result.innerHTML = thousandOperator(dollarToOtherCurrecy(+inputValue,updateSelecteTo()))
                     result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "&euro;"
                     break;
                 case "pound":
-                    result.innerHTML = dollarToOtherCurrecy(+input.value,updateSelecteTo())
+                    result.innerHTML = thousandOperator(dollarToOtherCurrecy(+inputValue,updateSelecteTo()))
                     result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "&pound;"
                     break
                 case "shillings":
-                    result.innerHTML = otherCurrencyToUgx(+input.value,updateSelectFrom())
+                    result.innerHTML = thousandOperator(otherCurrencyToUgx(+inputValue,updateSelectFrom()))
                     result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "UGX"
                     break
@@ -70,18 +78,18 @@ let convertingMoney = (event)=>{
         }else if(updateSelectFrom() == "pound"){
             switch (updateSelecteTo()) {
                 case "euro":
-                    result.innerHTML = poundToOTherCurrecy(+input.value, updateSelecteTo())
+                    result.innerHTML = thousandOperator(poundToOTherCurrecy(+inputValue, updateSelecteTo()))
                     result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "&euro;"
                     break;
                 case "dollars":
-                    result.innerHTML = poundToOTherCurrecy(+input.value, updateSelecteTo())
+                    result.innerHTML = thousandOperator(poundToOTherCurrecy(+inputValue, updateSelecteTo()))
                     result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "&dollar;"
                     break;
 
                 case "shillings":
-                    result.innerHTML = otherCurrencyToUgx(+input.value, updateSelectFrom())
+                    result.innerHTML = thousandOperator(otherCurrencyToUgx(+inputValue, updateSelectFrom()))
                     result.style.backgroundColor = "aquamarine"
                     currencySign.innerHTML = "UGX"
                     break;
@@ -96,17 +104,17 @@ let convertingMoney = (event)=>{
             // This is when the selectFrom.value
             switch (updateSelecteTo()){
                 case "euro":
-                    result.innerHTML = shillingsToOtherCurrecy(+input.value, updateSelecteTo())
+                    result.innerHTML = thousandOperator(shillingsToOtherCurrecy(+inputValue, updateSelecteTo()))
                     currencySign.innerHTML = "&euro;"
                     result.style.backgroundColor = "aquamarine"
                     break;
                 case "dollars":
-                    result.innerHTML = shillingsToOtherCurrecy(+input.value, updateSelecteTo())
+                    result.innerHTML = thousandOperator(shillingsToOtherCurrecy(+inputValue, updateSelecteTo()))
                     currencySign.innerHTML = "&dollar;"
                     result.style.backgroundColor = "aquamarine"
                     break
                 case "pound":
-                    result.innerHTML = shillingsToOtherCurrecy(+input.value, updateSelecteTo())
+                    result.innerHTML = thousandOperator(shillingsToOtherCurrecy(+inputValue, updateSelecteTo()))
                     currencySign.innerHTML = "&pound;"
                     result.style.backgroundColor = "aquamarine"
                     break;
@@ -119,7 +127,7 @@ let convertingMoney = (event)=>{
             }
         }
         // result.innerHTML =  (input.value/3878.47).toFixed(2)
-    },50)
+    // },500)
 }
 
 
@@ -156,4 +164,47 @@ let euroToOtherCurrency = (amount, currency)=>{
 
 let otherCurrencyToUgx = (amount, from)=>{
     return (amount * currencyValues[from]).toFixed(3)
+}
+
+/**
+ * Creating a function that will put a thousand operators on the amount returned
+ */
+let thousandOperator = (amount)=>{
+    // This is a regular expression that splits the 'amount' string into chunks of 3substring, 
+    //the \d shows it must be a number
+    let regex = /\d{2,3}/g
+    let result;
+    // I have used the string template to turn the amount in Number to String
+    let str = `${amount}` 
+
+    // regular expression to check whether there is a decimal point in the string
+    let regDecimalPoint = /[.]/
+
+    if(regDecimalPoint.test(amount)){
+        // I will take the string at index 0 and work on that
+        let str1 = str.split(".")[0] 
+        let len = str1.length
+
+        if(len%3 != 0){
+            if(len%3 === 1){
+                result = str1.slice(0,1)+","+str1.slice(1).match(regex).join(",")
+            }else{
+                result = str1.slice(0,2)+","+str1.slice(2).match(regex).join(",")
+            }
+        }else{
+            result = str1.match(regex).join(",")
+        }
+    }else{
+        let len = str.length
+        if(len%3 != 0){
+            if(len%3 === 1){
+                result = str.slice(0,1)+","+str.slice(1).match(regex).join(",")
+            }else{
+                result = str.slice(0,2)+","+str.slice(2).match(regex).join(",")
+            }
+        }else{
+            result = str.match(regex).join(",")
+        }
+    }
+    return result
 }
