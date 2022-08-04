@@ -56,4 +56,4 @@ I want to greatly focus on events handling in order to be able to make my websit
 
 ## Acknowledgments
 
-I want to thank my instructors at The Ablestate Creatives Limited the great work they are doing in giving out knowledge. And all the Ablestate fraternity.
+I want to thank my instructors at The Ablestate Creatives Limited for the great work they are doing in giving out knowledge. And all the Ablestate fraternity.
