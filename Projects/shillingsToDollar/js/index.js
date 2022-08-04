@@ -184,7 +184,6 @@ let thousandOperator = (amount)=>{
         // I will take the string at index 0 and work on that
         let str1 = str.split(".")[0] 
         let len = str1.length
-
         if(len%3 != 0){
             if(len%3 === 1){
                 result = str1.slice(0,1)+","+str1.slice(1).match(regex).join(",")
