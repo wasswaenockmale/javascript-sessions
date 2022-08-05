@@ -1,6 +1,6 @@
 # Currency Converter App
 
-This is a solution to the session assigment that was given at the ablestate creatives limited. It has helped me to improve my coding skills by building a realistic projects. 
+This is a solution to the session assignment that was given at the ablestate creatives limited. It has helped me to improve my coding skills by building a realistic projects. 
 
 ## Table of contents
 
