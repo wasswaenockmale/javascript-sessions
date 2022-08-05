@@ -47,7 +47,7 @@ I want to greatly focus on events handling in order to be able to make my websit
 
 ### Useful resources
 
-- [Javascript.Info](https://javascript.info/events-change-input)- This website helped me alot in understanding the different betweent 'onchange' and 'oninput' events as used in input parameters.
+- [Javascript.Info](https://javascript.info/events-change-input)- This website helped me alot in understanding the different between 'onchange' and 'oninput' events as used in input parameters.
 
 ## Author
 
