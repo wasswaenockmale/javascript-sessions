@@ -25,10 +25,14 @@ body{
 input{
     width: 250px;
     height: 40px;
+    outline: none;
 }
 #post{
     background-color: aquamarine;
     color: white;
     border: none;
     border-radius: 10px;
+}
+textarea{
+    outline: none;
 }
