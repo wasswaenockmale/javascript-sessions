@@ -292,4 +292,86 @@ function frankenSplice(arr1, arr2, n) {
   return arr2
 }
 
-console.log(frankenSplice([1, 2, 3], [4, 5, 6], 1))
+// console.log(frankenSplice([1, 2, 3], [4, 5, 6], 1))
+function chunkArrayInGroups(arr, size) {
+  let newArr = []
+  let len = arr.length
+  while(len > 0){
+    let splicedArr = arr.splice(0,size)
+    newArr.push(splicedArr)
+    len = arr.length
+  }
+  return newArr
+}
+
+console.log(chunkArrayInGroups(["a", "b", "c", "d"], 2))
+// chunkArrayInGroups(["a", "b", "c", "d"], 2);
+
+function Bird(name) {
+  this.name = name;
+  this.numLegs = 2;
+}
+Bird.prototype.color = "yellow" // This helps to add a property to the constructor.
+console.log(Bird.prototype.color)
+let canary = new Bird("Tweety");
+let ownProps = [];
+// Only change code below this line
+for(let property in canary){
+  // console.log("It works here ",property)
+  if(canary.hasOwnProperty(property)){
+    // console.log(property)
+    ownProps.push(property)
+  }
+}
+// console.log(canary)
+console.log(ownProps)
+
+function one(a,b){
+  return a > b?"First if statement": a===b?"This is the second if statement":"This is the third if statement"
+}
+console.log(one(2,2))
+
+function Dog(name) {
+  this.name = name;
+}
+// Remember to Set the Constructor Property when Changing the Prototype
+// There is one crucial side effect of manually setting the prototype to a new object. 
+// It erases the constructor property! This property can be used to 
+// check which constructor function created the instance, 
+// but since the property has been overwritten, 
+// it now gives false results:
+
+// To fix this, whenever a prototype is manually set to a new object, remember to define the constructor property:
+// Only change code below this line
+Dog.prototype = {
+  constructor: Dog,
+  numLegs: 4,
+  eat: function() {
+    console.log("nom nom nom");
+  },
+  describe: function() {
+    console.log("My name is " + this.name);
+  }
+};
+
+// Understand Where an Object’s Prototype Comes From
+// Just like people inherit genes from their parents, an object inherits its prototype directly from the constructor function that created it. For example, here the Bird constructor creates the duck object:
+
+// function Bird(name) {
+//   this.name = name;
+// }
+
+// let duck = new Bird("Donald");
+// duck inherits its prototype from the Bird constructor function. You can show this relationship with the isPrototypeOf method:
+
+// Bird.prototype.isPrototypeOf(duck);
+// This would return true.
+
+function Dog(name) {
+  this.name = name;
+}
+
+let beagle = new Dog("Snoopy");
+
+// Only change code below this line
+Dog.prototype.isPrototypeOf(beagle)
