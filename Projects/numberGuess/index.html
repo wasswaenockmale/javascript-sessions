@@ -110,8 +110,9 @@
             // From here, I am gonna create a button.
             let but = document.createElement("button")
             but.textContent = "reset"
+            but.classList.add("reset-button")
             let div = document.querySelector(".resultSection")
-            console.log(guessCount)
+            // console.log(guessCount)
             div.appendChild(but)
             but.addEventListener('click',()=>{
                 guessCount = 1
