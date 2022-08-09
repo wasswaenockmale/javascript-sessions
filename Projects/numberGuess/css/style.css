@@ -55,3 +55,7 @@ p{
     border: none;
     border-radius: 5px;
 }
+
+.empty-input{
+    border: 1px solid red;
+}
