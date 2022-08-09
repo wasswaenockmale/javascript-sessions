@@ -51,24 +51,27 @@
                     guessMessage.textContent = "Congratulation !!!"
                     guessMessage.style.backgroundColor="green"
                     gameOver()
+                    resetGame()
                 }else{
                     prevGuess.textContent += "Previous: "+guess
                     guessMessage.textContent = "Wrong guess! Try again"
                     guessCount++
                 }
             }else if(guessCount === 10){
-                //This is a game over thing
+                // This is a game over thing
                 if(guess ===  randomNumber){
                     prevGuess.textContent += " "+randomNumber
                     guessMessage.textContent = "Congratulation !!!"
                     guessOver.textContent = "Game Over"
                     gameOver()
+                    resetGame()
                 }else{
                     prevGuess.textContent +=" "+guess
                     guessMessage.textContent = "Wrong guess! Try again"
                     guessCount++
                     guessOver.textContent = "Game Over"
                     gameOver()
+                    resetGame()
                 }
             }else{
                 if(guess === randomNumber){
@@ -78,18 +81,47 @@
                     guessOver.textContent = "Game Over"
                     guessCount++
                     gameOver()
+                    resetGame()
                 }else{
                     prevGuess.textContent += " "+guess
                     guessCount++
                 }
             }
+            console.log(guessCount)
         }
         guessSubmit.addEventListener('click', checkGuess)
 
         // The game over function to stop the game.
         // I have used an arrow function. 
         let gameOver = ()=>{
-            
+            guessOver.innerHTML = "Game is over"
+            // guessOver.classList("")
+            guessField.disabled = true
+            guessSubmit.disabled = true // This disables the button from submitting guessNumber
+        }
+
+
+        // The function below should reset the game when the player has won the game
+        // or if the play has completed the number of times he is given to try out.
+        let resetGame = ()=>{
+            // guessCount = 1
+            // guessMessage.innerHTML = ""
+            // guessOver.innerHTML = ""
+            // From here, I am gonna create a button.
+            let but = document.createElement("button")
+            but.textContent = "reset"
+            let div = document.querySelector(".resultSection")
+            console.log(guessCount)
+            div.appendChild(but)
+            but.addEventListener('click',()=>{
+                guessCount = 1
+                prevGuess.innerHTML = ""
+                guessMessage.innerHTML = ""
+                guessOver.innerHTML = "";
+                guessField.disabled = false;
+                guessSubmit.disabled = false;
+                div.removeChild(but)
+            })
         }
     </script>
 </body>
