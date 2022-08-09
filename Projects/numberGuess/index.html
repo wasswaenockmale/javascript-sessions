@@ -49,12 +49,13 @@
                 if(guess ===  randomNumber){
                     prevGuess.textContent += randomNumber
                     guessMessage.textContent = "Congratulation !!!"
-                    guessMessage.style.backgroundColor="green"
+                    guessMessage.classList.add('guess-right')
                     gameOver()
                     resetGame()
                 }else{
                     prevGuess.textContent += "Previous: "+guess
                     guessMessage.textContent = "Wrong guess! Try again"
+                    guessMessage.classList.add('guess-wrong')
                     guessCount++
                 }
             }else if(guessCount === 10){
@@ -62,14 +63,15 @@
                 if(guess ===  randomNumber){
                     prevGuess.textContent += " "+randomNumber
                     guessMessage.textContent = "Congratulation !!!"
-                    guessOver.textContent = "Game Over"
+                    guessMessage.classList.add('guess-right')
+                    // guessOver.textContent = "Game Over"
                     gameOver()
                     resetGame()
                 }else{
                     prevGuess.textContent +=" "+guess
                     guessMessage.textContent = "Wrong guess! Try again"
+                    guessMessage.classList.add('guess-wrong')
                     guessCount++
-                    guessOver.textContent = "Game Over"
                     gameOver()
                     resetGame()
                 }
@@ -78,7 +80,8 @@
                     prevGuess.textContent += " "+guess
                     guessMessage.textContent = "Congratulation !!!"
                     guessMessage.style.backgroundColor="green"
-                    guessOver.textContent = "Game Over"
+                    guessMessage.classList.add('guess-right')
+                    // guessOver.textContent = "Game Over"
                     guessCount++
                     gameOver()
                     resetGame()
@@ -95,6 +98,7 @@
         // I have used an arrow function. 
         let gameOver = ()=>{
             guessOver.innerHTML = "Game is over"
+            guessOver.style.Color = "blue"
             // guessOver.classList("")
             guessField.disabled = true
             guessSubmit.disabled = true // This disables the button from submitting guessNumber
