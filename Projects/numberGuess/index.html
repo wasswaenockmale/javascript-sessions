@@ -34,6 +34,7 @@
         
         // The random number is from 1 to 100 
         let randomNumber = Math.floor((Math.random() * 100) + 1)
+        // console.log(randomNumber)
         const guessField = document.querySelector('.guessField')
         const guessSubmit = document.querySelector('.guess-submit')
         const guessMessage = document.querySelector('.guessMessage')
@@ -126,6 +127,8 @@
                 guessOver.innerHTML = "";
                 guessField.disabled = false;
                 guessSubmit.disabled = false;
+                randomNumber = Math.floor((Math.random() * 100) + 1)
+                // console.log(`${randomNumber}`)
                 div.removeChild(but)
             })
         }
