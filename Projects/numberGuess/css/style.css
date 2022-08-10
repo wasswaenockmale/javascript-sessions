@@ -27,14 +27,13 @@ body{
 .resultSection{
     display: flex;
     flex-direction: column;
-    height: 100px;
     align-items: center;
-    /* padding: 0px; */
+    /* border: 2px solid green; */
+    padding: 0px;
 }
 
 h1{
     text-align: center;
-    /* padding: 10px; */
 }
 p{
     text-align: center;
@@ -51,12 +50,11 @@ p{
 }
 .guess-right{
     color: white;
-    background-color: green;
+    /* background-color: green; */
 }
 
 .reset-button{
     padding: 5px;
-    margin-left: 25px;
     width: 200px;
     height: 30px;
     color: white;
