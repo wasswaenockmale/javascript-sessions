@@ -24,3 +24,4 @@ function remove(bookList, bookName) {
 }
 
 console.log(add(bookList, "I love programming"))
+console.log(bookList)
