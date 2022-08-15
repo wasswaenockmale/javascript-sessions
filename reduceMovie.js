@@ -147,3 +147,18 @@ const watchList = [
   }
   
   alphabeticalOrder(["a", "d", "c", "a", "z", "g"]);
+
+
+  const globalArray = [5, 6, 3, 2, 9];
+
+// Returning a sorted array without changing the original array.
+function nonMutatingSort(arr) {
+  // Only change code below this line
+  return [...arr].sort((a,b)=>{
+    return a - b
+  })
+
+  // Only change code above this line
+}
+
+nonMutatingSort(globalArray);
