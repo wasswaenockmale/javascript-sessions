@@ -178,4 +178,14 @@ function urlSlug(title) {
 }
 // Only change code above this line
 // urlSlug("A Mind Needs Books Like A Sword Needs A Whetstone");
-console.log(urlSlug(" Winter Is  Coming"))
+// console.log(urlSlug(" Winter Is  Coming"))
+
+function checkPositive(arr) {
+  // Only change code below this line
+  return arr.every((currentValue)=>{
+    return currentValue > 0
+  })
+  // Only change code above this line
+}
+
+checkPositive([1, 2, 3, -4, 5]);
