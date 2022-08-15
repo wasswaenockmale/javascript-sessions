@@ -1,7 +1,7 @@
 // The global variable
 const s = [23, 65, 98, 5];
 
-Array.prototype.myFilter = function(callback) {
+Array.prototype.myFilter = function(callback){
   // Only change code below this line
   const newArray = [];
   for(let k = 0; k < this.length; k++){
