@@ -162,3 +162,12 @@ function nonMutatingSort(arr) {
 }
 
 nonMutatingSort(globalArray);
+
+// Spliting the function with a non-alphanumeric characters
+function splitify(str) {
+  // Only change code below this line
+  return str.split(/\W/)
+  // Only change code above this line
+}
+
+splitify("Hello World,I-am code");
