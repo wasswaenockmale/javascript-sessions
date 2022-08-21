@@ -1,12 +1,21 @@
 function whatIsInAName(collection, source) {
     let arr = [];
+    let res = []
     // Only change code below this line
+    // I have to check whether the object has both of these properties.
     collection.forEach(element=>{
+      let bool = false
       for(let k in source){
         if(element[k] === source[k]){
           // console.log(element)
-          arr.push(element)
+          bool = true
+        }else{
+          bool = false
+          break
         }
+      }
+      if(bool === true){
+        arr.push(element)
       }
     })
     // Only change code above this line
