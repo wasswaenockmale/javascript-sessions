@@ -1,5 +1,20 @@
 function translatePigLatin(str) {
-    return str;
+    let consonants = /[^aeiou]/
+    if(consonants.test(str[0])){
+        if(!/[aeiou]/g.test(str)){
+            str += "ay"
+        }else{
+            // Check for the first occurance of the vowel
+            let index = str.indexOf(str.match(/[aeiou]/)[0])
+            let copLetters = str.slice(0,index)
+            str = str.slice(index) + copLetters + "ay"
+        }
+    }else{
+        str += "way"
+    }
+    return str
   }
-  
-  translatePigLatin("consonant");
+  console.log(translatePigLatin("eight"))
+  console.log(translatePigLatin("paragraphs"))
+  console.log(translatePigLatin("rythm"))
+  console.log(translatePigLatin("glove"))
