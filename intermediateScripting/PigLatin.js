@@ -14,7 +14,3 @@ function translatePigLatin(str) {
     }
     return str
   }
-  console.log(translatePigLatin("eight"))
-  console.log(translatePigLatin("paragraphs"))
-  console.log(translatePigLatin("rythm"))
-  console.log(translatePigLatin("glove"))
