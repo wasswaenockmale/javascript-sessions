@@ -7,6 +7,6 @@ function sumPrimes(num) {
     }
     return primes.reduce((sum, prime)=>sum + prime,0)
 }
-  
+
 console.log(sumPrimes(10))
 console.log(sumPrimes(977))
