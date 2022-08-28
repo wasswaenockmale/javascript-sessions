@@ -23,7 +23,7 @@ function convertToRoman(num) {
         if(remainder !== 0){
             if(Object.keys(roman).find((number)=>roman[number] === remainder) !== undefined){
                 if(count > 1){
-                    prev = num + "0".repeat(count)
+                    prev = remainder + "0".repeat(count)
                     if(Object.keys(roman).find((elem)=>roman[elem] === Number(prev)) !== undefined){
                         // This means it actually exists.
                         res.unshift(Object.keys(roman).find((elem)=>roman[elem] === Number(prev)))
