@@ -16,8 +16,8 @@ function convertToRoman(num) {
     }
     let res;
     let count = 0; // to count the tens and thousands.
-    
-    return Object.keys(roman).find((number)=>roman[number] === );
+
+    return Object.keys(roman).find((number)=>roman[number] === 1000);
 }
    
 console.log(convertToRoman(36))
