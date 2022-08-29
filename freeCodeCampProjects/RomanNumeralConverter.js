@@ -23,7 +23,8 @@ function convertToRoman(num) {
         let prev = num;
         num = Math.floor(num/10)
         // console.log(`This is the remainder: ${remainder}`)
-        let checkValue = Object.keys(roman).find((element)=>roman[element] === remainder)
+        let checkValue = Object.keys(roman).find((element)=>roman[element] === num)
+        let checkRemainder = Object.keys(roman).find((element)=>roman)
         if(checkValue !== undefined){
             res.unshift(checkValue)
         }else{
@@ -35,33 +36,6 @@ function convertToRoman(num) {
                 let roms = Object.keys(roman).find((elem)=>roman[elem] === Number(5 + "0".repeat(count - 1)))
                 res.unshift(roms + rom.repeat(remainder))
             }
-        }
-        // if(count === 1){
-        //     // console.log(checkValue)
-        //     if(checkValue !== undefined){
-        //         res.unshift(checkValue)
-        //     }else{
-        //         prev = prev + "0".repeat(count-1)
-        //         // console.log(prev)
-        //         let romanNum = Object.keys(roman).find((ele)=>roman[ele] === 1)
-        //         if(Number(prev) > 1 && Number(prev) < 4){
-        //             let btn_value = Number(prev)
-        //             res.unshift(romanNum.repeat(btn_value))
-        //         }else if(Number(prev) > 5 && Number(prev) < 9){
-        //             let btn_value = Number(prev) - 5
-        //             console.log(btn_value)
-        //             let rom = Object.keys(roman).find((elem)=>roman[elem] === 5) + romanNum.repeat(btn_value)
-        //             res.unshift(rom)
-        //         }
-        //     }
-        // }else{
-        //     if(checkValue !== undefined){
-        //         res.unshift(checkValue)
-        //     }else{
-
-        //     }
-        // }
-        // let checkValue = Object.keys(roman).find((element)=>roman[element] === remainder)
     }
 
     return res.join("")
