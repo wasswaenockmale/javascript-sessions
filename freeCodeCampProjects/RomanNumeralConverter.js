@@ -22,34 +22,34 @@ function convertToRoman(num) {
     }else{
         while(num !== 0){
                 let remainder = num%10
-                let prev = num;
+                let divisor = Math.floor(num/10);
                 // console.log(`This is the remainder: ${remainder}`)
                 let checkValue = Object.keys(roman).find((element)=>roman[element] === num)
                 // console.log(remainder)
                 let checkRemainder = Object.keys(roman).find((element)=>roman[element] === remainder)
-                if(checkValue !== undefined){
-                    res.unshift(checkValue)
+
+                let curr = remainder + "0".repeat(count)
+                console.log(curr)
+                let checkCurr = Object.keys(roman).find((element)=>roman[element] === Number(curr))
+                if(checkCurr !== undefined){
+                    res.unshift(checkCurr)
+                    count++
+                    num = divisor
                 }else{
-                    let r = Number(remainder + "0".repeat(count))
-                    console.log(r)
-                    let rObj = Object.keys(roman).find((element)=>roman[element] === r)
-                    if(rObj !== undefined){
-                        res.unshift(rObj)
-                    }else{
-                        let rom = Object.keys(roman).find((elem)=>roman[elem] === Number(1 + "0".repeat(count)))
-                        if(r > Number(1 + "0".repeat(count)) && r < Number(4 + "0".repeat(count))){
-                            res.unshift(rom.repeat(remainder))
-                        }else if(r > Number(5 + "0".repeat(count)) && r < Number(9 + "0".repeat(count))){
-                            let roms = Object.keys(roman).find((elem)=>roman[elem] === Number(5 + "0".repeat(count)))
-                            res.unshift(roms + rom.repeat(remainder))
-                        }
+                    curr = Number(curr) // Making it a number
+                    if(curr > Number(1 + "0".repeat(count)) && curr < Number(5 + "0".repeat(count))){
+                        res.unshift(Object.keys(roman).find((element)=> roman[element] === Number(1 + "0".repeat(count))).repeat(remainder))
+                    }else if(curr > Number(5 + "0".repeat(count)) && curr < Number(9 + "0".repeat(count))){
+                        res.unshift(Object.keys(roman).find((element)=>roman[element] === Number(5 + "0".repeat(count)))+Object.keys(roman).find((element)=>roman[element] === Number(1 + "0".repeat(count))))
                     }
+                    count++
+                    num = divisor
                 }
-                count++;
-                num = Math.floor(num/10)
-            }
+
+                
+        }
     }
     return res.join("")
 }
 
-console.log(convertToRoman(102))
+console.log(convertToRoman(112))
