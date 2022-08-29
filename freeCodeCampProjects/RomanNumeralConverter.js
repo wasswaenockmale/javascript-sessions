@@ -24,9 +24,6 @@ function convertToRoman(num) {
                 let remainder = num%10
                 let divisor = Math.floor(num/10);
                 // console.log(`This is the remainder: ${remainder}`)
-                let checkValue = Object.keys(roman).find((element)=>roman[element] === num)
-                // console.log(remainder)
-                let checkRemainder = Object.keys(roman).find((element)=>roman[element] === remainder)
 
                 let curr = remainder + "0".repeat(count)
                 let checkCurr = Object.keys(roman).find((element)=>roman[element] === Number(curr))
