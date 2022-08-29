@@ -22,21 +22,23 @@ function convertToRoman(num) {
     }else{
         while(num !== 0){
                 count++;
-                
                 let remainder = num%10
                 let prev = num;
                 num = Math.floor(num/10)
                 // console.log(`This is the remainder: ${remainder}`)
-                let checkValue = Object.keys(roman).find((element)=>roman[element] === num)
-                let checkRemainder = Object.keys(roman).find((element)=>roman)
+                let checkValue = Object.keys(roman).find((element)=>roman[element] === remainder)
+                // console.log(remainder)
+                // let checkRemainder = Object.keys(roman).find((element)=>roman)
                 if(checkValue !== undefined){
                     res.unshift(checkValue)
                 }else{
-                    prev = Number(prev + "0".repeat(count - 1))
+                    let r = Number(remainder + "0".repeat(count - 1))
+                    
+                    
                     let rom = Object.keys(roman).find((elem)=>roman[elem] === Number(1 + "0".repeat(count -1)))
-                    if(prev > rom && prev < Number(4 + "0".repeat(count - 1))){
+                    if(r > Number(1 + "0".repeat(count - 1)) && r < Number(4 + "0".repeat(count - 1))){
                         res.unshift(rom.repeat(remainder))
-                    }else if(prev > Number(5 + "0".repeat(count - 1)) && prev < Number(9 + "0".repeat(count - 1))){
+                    }else if(r > Number(5 + "0".repeat(count - 1)) && r < Number(9 + "0".repeat(count - 1))){
                         let roms = Object.keys(roman).find((elem)=>roman[elem] === Number(5 + "0".repeat(count - 1)))
                         res.unshift(roms + rom.repeat(remainder))
                     }
@@ -46,4 +48,4 @@ function convertToRoman(num) {
     return res.join("")
 }
 
-console.log(convertToRoman(101))
+console.log(convertToRoman(102))
