@@ -21,28 +21,32 @@ function convertToRoman(num) {
         res.unshift(ch)
     }else{
         while(num !== 0){
-                count++;
                 let remainder = num%10
                 let prev = num;
-                num = Math.floor(num/10)
                 // console.log(`This is the remainder: ${remainder}`)
-                let checkValue = Object.keys(roman).find((element)=>roman[element] === remainder)
+                let checkValue = Object.keys(roman).find((element)=>roman[element] === num)
                 // console.log(remainder)
-                // let checkRemainder = Object.keys(roman).find((element)=>roman)
+                let checkRemainder = Object.keys(roman).find((element)=>roman[element] === remainder)
                 if(checkValue !== undefined){
                     res.unshift(checkValue)
                 }else{
-                    let r = Number(remainder + "0".repeat(count - 1))
-                    
-                    
-                    let rom = Object.keys(roman).find((elem)=>roman[elem] === Number(1 + "0".repeat(count -1)))
-                    if(r > Number(1 + "0".repeat(count - 1)) && r < Number(4 + "0".repeat(count - 1))){
-                        res.unshift(rom.repeat(remainder))
-                    }else if(r > Number(5 + "0".repeat(count - 1)) && r < Number(9 + "0".repeat(count - 1))){
-                        let roms = Object.keys(roman).find((elem)=>roman[elem] === Number(5 + "0".repeat(count - 1)))
-                        res.unshift(roms + rom.repeat(remainder))
+                    let r = Number(remainder + "0".repeat(count))
+                    console.log(r)
+                    let rObj = Object.keys(roman).find((element)=>roman[element] === r)
+                    if(rObj !== undefined){
+                        res.unshift(rObj)
+                    }else{
+                        let rom = Object.keys(roman).find((elem)=>roman[elem] === Number(1 + "0".repeat(count)))
+                        if(r > Number(1 + "0".repeat(count)) && r < Number(4 + "0".repeat(count))){
+                            res.unshift(rom.repeat(remainder))
+                        }else if(r > Number(5 + "0".repeat(count)) && r < Number(9 + "0".repeat(count))){
+                            let roms = Object.keys(roman).find((elem)=>roman[elem] === Number(5 + "0".repeat(count)))
+                            res.unshift(roms + rom.repeat(remainder))
+                        }
                     }
                 }
+                count++;
+                num = Math.floor(num/10)
             }
     }
     return res.join("")
