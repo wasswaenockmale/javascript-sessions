@@ -54,7 +54,10 @@ function convertToRoman(num) {
 }
 
 // console.log(convertToRoman(1111))
-// console.log(convertToRoman(83))
-// console.log(convertToRoman(99))
+console.log(convertToRoman(83))
+console.log(convertToRoman(99))
+console.log(convertToRoman(97))
 // console.log(convertToRoman(68))
-console.log(convertToRoman(70))
+console.log(convertToRoman(68))
+console.log(convertToRoman(2014))
+console.log(convertToRoman(1023))
