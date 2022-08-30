@@ -20,6 +20,7 @@ function telephoneCheck(str) {
     else {
         return rex2.test(str) ? true : false
     }
+    
 }
 
 console.log(telephoneCheck("555-555-5555"))
