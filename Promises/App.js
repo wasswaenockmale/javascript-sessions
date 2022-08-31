@@ -37,3 +37,16 @@ function myPromiseDesign(executor){
     executor(resolve, reject)
     
 }
+
+let doWork = (res, rej)=>{
+    setTimeout(()=>{res("Hello world")},1000)
+}
+
+let someWork = new myPromiseDesign(doWork)
+someWork.then((val)=>{
+    console.log("1st Log: ", val)
+})
+
+someWork.then((val)=>{
+    console.log("2nd Log: ", val)
+})
