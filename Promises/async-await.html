@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trying Async Await</title>
+</head>
+<body>
+    <script>
+        let result = function(val){
+            return new Promise((res, rej)=>{
+                if(val < 50){
+                    res("You have passed!!")
+                }else{
+                    rej("You have failed.")
+                }
+            })
+        }
+
+        let grade = function(response){
+            return new Promise((resolve, rejected)=>{
+                console.log("Well, your grade is A ", response)
+            })
+        }
+
+        // Now instead of using nested-promise, we use async await
+    </script>
+</body>
+</html>
