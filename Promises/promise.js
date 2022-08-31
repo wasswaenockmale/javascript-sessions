@@ -19,11 +19,12 @@ let travel = function(){
 
 empty_tank()
 .then((val)=>{
-    console.log("This is the first value")
+    console.log(val)
     return engine()
 }).then((val)=>{
-    console.log("This is the first value")
+    console.log(val)
     return travel()
-}).then(()=>{
+}).then((val)=>{
+    console.log(val)
     console.log("This is done")
 })
