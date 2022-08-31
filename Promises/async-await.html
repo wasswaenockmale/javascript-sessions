@@ -7,10 +7,11 @@
     <title>Trying Async Await</title>
 </head>
 <body>
+    <h1>Async await</h1>
     <script>
         let result = function(val){
             return new Promise((res, rej)=>{
-                if(val < 50){
+                if(val > 50){
                     res("You have passed!!")
                 }else{
                     rej("You have failed.")
@@ -27,7 +28,7 @@
         // Now instead of using nested-promise, we use async await
         async function calculateGrage(){
             try{
-                const response = await result(30)
+                const response = await result(20)
                 console.log("Results received.")
                 const grad = await grade(response)
                 console.log(grad)
@@ -35,6 +36,8 @@
                 console.log(er)
             }
         }
+
+        calculateGrage()
     </script>
 </body>
 </html>
