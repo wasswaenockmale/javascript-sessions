@@ -42,17 +42,25 @@ let doWork = (res, rej)=>{
     setTimeout(()=>{res("Hello world")},1000)
 }
 
+let doOtherWork = (res, rej)=>{
+    setTimeout(()=>{res("Another one")})
+}
+let someOtherWork = new Promise(doWork)
 let someWork = new myPromiseDesign(doWork)
-someWork.then((val)=>{
+someOtherWork.then((val)=>{
     console.log("1st Log: ", val)
+    return new Promise(doOtherWork)
+}).then((value)=>{
+    console.log("I love programming")
+    console.log(value)
 })
 
-someWork.then((val)=>{
-    console.log("2nd Log: ", val)
-})
+// someWork.then((val)=>{
+//     console.log("2nd Log: ", val)
+// })
 
-setTimeout(()=>{
-    someWork.then((val)=>{
-        console.log("3rd Log: ", val)
-    })
-},3000)
+// setTimeout(()=>{
+//     someWork.then((val)=>{
+//         console.log("3rd Log: ", val)
+//     })
+// },3000)
