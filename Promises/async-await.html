@@ -25,6 +25,16 @@
         }
 
         // Now instead of using nested-promise, we use async await
+        async function calculateGrage(){
+            try{
+                const response = await result(30)
+                console.log("Results received.")
+                const grad = await grade(response)
+                console.log(grad)
+            }catch(er){
+                console.log(er)
+            }
+        }
     </script>
 </body>
 </html>
