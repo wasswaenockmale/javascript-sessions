@@ -2,7 +2,7 @@ const PENDING = 0;
 const FULLFILLED = 1;
 const REJECTED = 2;
 
-function myPromiseDesign(res, rej){
+function myPromiseDesign(executor){
     let value = null;
     let state = PENDING;
     let handlers = []
@@ -23,8 +23,17 @@ function myPromiseDesign(res, rej){
         state = REJECTED;
         value = er
 
-        catches.forEach(c=>c(value))
+        catches.forEach(c=>c(er))
     }
 
+    this.then = function(callback){
+        if(state === FULLFILLED){
+            callback(value)
+        }else{
+            handlers.push(callback)
+        }
+    }
+
+    executor(resolve, reject)
     
 }
