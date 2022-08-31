@@ -50,3 +50,9 @@ someWork.then((val)=>{
 someWork.then((val)=>{
     console.log("2nd Log: ", val)
 })
+
+setTimeout(()=>{
+    someWork.then((val)=>{
+        console.log("3rd Log: ", val)
+    })
+},3000)
