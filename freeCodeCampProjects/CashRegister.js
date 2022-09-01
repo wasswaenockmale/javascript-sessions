@@ -31,7 +31,7 @@ function checkCashRegister(price, cash, cid) {
         let div = change_due/unit
         if(div >= 1){
             let amount = 0
-            let count_unit = 0
+            
             while(sum <= change_ && value !==0){
                 if((sum + unit) <= change_){
                     sum += unit
