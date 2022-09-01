@@ -32,17 +32,17 @@ function checkCashRegister(price, cash, cid) {
         if(div >= 1){
             let amount = 0
             let count_unit = 0
-            while(sum <= change_ && value > 0){
-                sum += unit
-                if(sum > change_){
-                    sum -= unit
-                    break
-                }else{
-                    count_unit += 1
+            while(sum <= change_ && value !==0){
+                if((sum + unit) <= change_){
+                    sum += unit
                     value -= unit
+                    amount += unit
+                }else{
+                    break;
                 }
             }
-            arr.push(vName, unit*count_unit)
+            console.log(amount)
+            arr.push(vName, amount)
             
         }
 
