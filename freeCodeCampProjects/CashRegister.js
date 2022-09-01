@@ -1,7 +1,7 @@
 function checkCashRegister(price, cash, cid) {
-    const change_due = cash - price
+    const change_due = (cash - price)*100
     const change_ = change_due
-    // console.log(change_)
+    console.log(change_)
     const currencyUnit = {
         "PENNY": 0.01,
         "NICKEL": 0.05,
@@ -24,27 +24,26 @@ function checkCashRegister(price, cash, cid) {
     let sum = 0;
 
     filteredcid.forEach(ar=>{
-        let value = ar[1]
+        let value = ar[1]*100
         let vName = ar[0]
 
-        let unit = currencyUnit[vName]
+        let unit = currencyUnit[vName]*100
         let div = change_due/unit
         if(div >= 1){
             let amount = 0
 
             while(sum < change_ && value !== 0){
-                if((sum + unit) <= change_){
+                if(change_ >= (sum + unit)){
+                    // console.log(unit)
                     sum += unit
                     value -= unit
                     amount += unit
-                    console.log(amount)
                 }else{
-                    break;
+                    break
                 }
             }
             console.log(sum)
-            console.log(value)
-            arr.push(vName, amount)
+            arr.push(vName, amount/100)
             
         }
 
