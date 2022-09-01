@@ -2,6 +2,8 @@ function checkCashRegister(price, cash, cid) {
     const change_due = (cash - price)*100
     const change_ = change_due
     // console.log(change_)
+
+    // These are contants for the money type in the USA.
     const currencyUnit = {
         "PENNY": 0.01,
         "NICKEL": 0.05,
