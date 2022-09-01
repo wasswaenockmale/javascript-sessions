@@ -15,11 +15,16 @@ function checkCashRegister(price, cash, cid) {
       }
 
     const filteredcid = cid.filter(element=> element[1] !== 0).reverse()
-    let totalcid = filteredcid.reduce((prev, curr)=>{
-        prev += curr[1]
-    },0)
+    let totalcid = 0
+    cid.forEach(element=>totalcid += element[1]*100)
+    // console.log(totalcid/100)
+    if(totalcid < change_due/100){
+        return {"status": "INSUFFICIENT_FUNDS", "change": []}
+    }
 
-
+    if(totalcid/100 == change_due/100){
+        return {"status":"CLOSED", "change": cid}
+    }
     let arr = [];
     let sum = 0;
 
@@ -49,16 +54,20 @@ function checkCashRegister(price, cash, cid) {
     })
 
     // This is what we shall check to see if we have enough change or not
+    let returnObj = {}
     let finalCount = 0;
     arr.forEach(element=>{
         finalCount += element[1]*100
     })
-    
-    
-    // return totalcid === change_due/100 ? {"status":"CLOSED", "change": cid} : 
+
+    if(finalCount/100 === change_due/100){
+       return {"status": "OPEN", "change":arr.filter(element=> element[1] !== 0)}
+    }else {
+        return {"status": "INSUFFICIENT_FUNDS", "change": []}
+    }
 }
 
 console.log(checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]))
 console.log(checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]))
-// console.log(checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 1], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]))
-// console.log(checkCashRegister(19.5, 20, [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]))
+console.log(checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 1], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]))
+console.log(checkCashRegister(19.5, 20, [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]))
