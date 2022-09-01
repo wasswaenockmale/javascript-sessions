@@ -15,9 +15,9 @@ function checkCashRegister(price, cash, cid) {
       }
 
     const filteredcid = cid.filter(element=> element[1] !== 0).reverse()
-    // let totalcid = filteredcid.reduce((prev, curr)=>{
-    //     prev += curr[1]
-    // },0)
+    let totalcid = filteredcid.reduce((prev, curr)=>{
+        prev += curr[1]
+    },0)
 
 
     let arr = [];
